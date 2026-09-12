@@ -1,0 +1,192 @@
+body {
+    background: #f5f6f8;
+    font-family: Arial, sans-serif;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.top-bar h3 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.zone-text {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.summary-bar {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+
+    background: white;
+
+    padding: 10px 15px;
+    margin-top: 10px;
+
+    border: 1px solid #ccc;
+}
+
+.table-card {
+    background: white;
+
+    border: 2px solid #ddd;
+    border-radius: 8px;
+
+    padding: 15px;
+
+    min-height: 175px;
+}
+
+.table-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-card-header h5 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.status-badge {
+    color: white;
+
+    padding: 5px 14px;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status-available {
+    border-color: #28a745;
+}
+
+.status-badge.status-available {
+    background: #28a745;
+}
+
+.status-occupied {
+    border-color: #dc3545;
+}
+
+.status-badge.status-occupied {
+    background: #dc3545;
+}
+
+.status-reserved {
+    border-color: #0d6efd;
+}
+
+.status-badge.status-reserved {
+    background: #0d6efd;
+}
+
+.status-cleaning {
+    border-color: #6c757d;
+}
+
+.status-badge.status-cleaning {
+    background: #6c757d;
+}
+
+.table-detail {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    font-weight: 500;
+}
+
+.table-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.action-btn {
+    width: 100%;
+}
+
+.service-monitor {
+    background: white;
+
+    border: 2px solid #dc3545;
+    border-radius: 8px;
+
+    padding: 15px;
+}
+
+.service-monitor h4 {
+    font-weight: bold;
+}
+
+.monitor-box {
+    border: 1px solid #777;
+    border-radius: 8px;
+
+    padding: 12px;
+
+    min-height: 200px;
+}
+
+.monitor-box h5 {
+    font-weight: bold;
+
+    border-bottom: 1px solid #ccc;
+
+    padding-bottom: 8px;
+}
+
+.service-card {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid #dc3545;
+    border-radius: 6px;
+
+    padding: 10px;
+    margin-top: 10px;
+
+    background: #fff;
+}
+
+.service-info {
+    flex: 1;
+}
+
+.service-actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.empty-state {
+    padding: 20px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+.order-line {
+    display: flex;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #ddd;
+
+    padding: 8px 0;
+}
