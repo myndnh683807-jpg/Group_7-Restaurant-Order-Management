@@ -3,64 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - UI-05</title>
+    <title>UI-05: Manager Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light">
-    <div class="container py-4">
-        <h2 class="mb-4 text-primary">Admin Dashboard (UC13 & UC14)</h2>
-
-        <!-- UC13: EMPLOYEE MANAGEMENT -->
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">UC13: Employee Management</h5></div>
-            <div class="card-body">
-                <form id="employeeForm" class="row g-3 mb-3">
-                    <div class="col-md-3"><input type="text" id="empUsername" class="form-control" placeholder="Username" required></div>
-                    <div class="col-md-3"><input type="password" id="empPassword" class="form-control" placeholder="Password" required></div>
-                    <div class="col-md-3"><input type="text" id="empFullName" class="form-control" placeholder="Full Name" required></div>
-                    <div class="col-md-3">
-                        <select id="empRole" class="form-select" required>
-                            <option value="">Select Role</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Staff">Staff</option>
-                            <option value="Chef">Chef</option>
-                        </select>
-                    </div>
-                    <div class="col-12"><button type="submit" class="btn btn-success">Add Employee</button></div>
-                </form>
-                <table class="table table-bordered table-striped">
-                    <thead class="table-dark">
-                        <tr><th>Username</th><th>Full Name</th><th>Role</th></tr>
-                    </thead>
-                    <tbody id="employeeTableBody"></tbody>
-                </table>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar Navigation (Hình 1) -->
+        <div class="sidebar p-3" id="sidebar-wrapper">
+            <h6 class="sidebar-title text-uppercase mb-4">UI-05: MANAGER ADMIN DASHBOARD</h6>
+            <div class="nav nav-pills flex-column gap-2" id="v-pills-tab" role="tablist">
+                <button class="nav-link active sidebar-btn" onclick="switchTab('dashboard', this)">Dashboard</button>
+                <button class="nav-link sidebar-btn" onclick="switchTab('employees', this)">Employees</button>
+                <button class="nav-link sidebar-btn" onclick="switchTab('inventory', this)">Inventory</button>
+                <button class="nav-link sidebar-btn" onclick="switchTab('revenue', this)">Revenue</button>
+                <button class="nav-link sidebar-btn" onclick="switchTab('tables', this)">Table Config</button>
             </div>
         </div>
 
-        <!-- UC14: INVENTORY MANAGEMENT -->
-        <div class="card shadow-sm">
-            <div class="card-header bg-success text-white"><h5 class="mb-0">UC14: Inventory Management</h5></div>
-            <div class="card-body">
-                <form id="inventoryForm" class="row g-3 mb-3">
-                    <div class="col-md-3"><input type="text" id="itemName" class="form-control" placeholder="Item Name" required></div>
-                    <div class="col-md-3"><input type="number" step="0.1" id="itemQuantity" class="form-control" placeholder="Quantity" required></div>
-                    <div class="col-md-3"><input type="text" id="itemUnit" class="form-control" placeholder="Unit (e.g. kg, pcs)" required></div>
-                    <div class="col-md-3"><input type="number" step="0.1" id="itemMinQuantity" class="form-control" placeholder="Min Threshold" required></div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-success">Add / Update Inventory</button>
-                        <button type="button" id="btnLowStock" class="btn btn-warning ms-2">View Low Stock Alerts</button>
+        <!-- Main Content Area -->
+        <div id="page-content-wrapper" class="w-100 p-4 bg-light">
+            <h2 class="fw-bold mb-4">MANAGER ADMIN DASHBOARD</h2>
+
+            <!-- TAB 1: DASHBOARD (Giống Hình 1) -->
+            <div id="tab-dashboard" class="tab-section">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="card p-3 border-0 shadow-sm text-center bg-white">
+                            <small class="text-muted fw-bold">Today's Revenue</small>
+                            <h4 class="text-warning fw-bold mt-1 mb-0">18,450,000 VND</h4>
+                        </div>
                     </div>
-                </form>
-                <table class="table table-bordered table-striped">
-                    <thead class="table-dark">
-                        <tr><th>Item Name</th><th>Quantity</th><th>Unit</th><th>Min Threshold</th></tr>
-                    </thead>
-                    <tbody id="inventoryTableBody"></tbody>
-                </table>
+                    <div class="col-md-4">
+                        <div class="card p-3 border-0 shadow-sm text-center bg-white">
+                            <small class="text-muted fw-bold">Total Orders</small>
+                            <h4 class="text-success fw-bold mt-1 mb-0">84 Orders</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3 border-0 shadow-sm text-center bg-white">
+                            <small class="text-muted fw-bold">Active Staff</small>
+                            <h4 class="text-info fw-bold mt-1 mb-0">12 On Duty</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart Mockup -->
+                <div class="card p-4 border-0 shadow-sm bg-white">
+                    <h6 class="fw-bold mb-4">Revenue Trends (This Week)</h6>
+                    <div class="d-flex align-items-end justify-content-between pt-4 px-3" style="height: 220px;">
+                        <div class="chart-bar text-center">
+                            <div class="bar bg-danger rounded-top" style="height: 60px;"></div>
+                            <small class="fw-bold mt-2 d-block">Mon</small>
+                        </div>
+                        <div class="chart-bar text-center">
+                            <div class="bar bg-danger rounded-top" style="height: 100px;"></div>
+                            <small class="fw-bold mt-2 d-block">Tue</small>
+                        </div>
+                        <div class="chart-bar text-center">
+                            <div class="bar bg-danger rounded-top" style="height: 110px;"></div>
+                            <small class="fw-bold mt-2 d-block">Wed</small>
+                        </div>
+                        <div class="chart-bar text-center">
+                            <div class="bar bg-danger rounded-top" style="height: 90px;"></div>
+                            <small class="fw-bold mt-2 d-block">Thu</small>
+                        </div>
+                        <div class="chart-bar text-center">
+                            <div class="bar bg-danger rounded-top" style="height: 140px;"></div>
+                            <small class="fw-bold mt-2 d-block">Fri</small>
+                        </div>
+                        <div class="chart-bar text-center">
+                            <div class="bar bg-danger rounded-top" style="height: 170px;"></div>
+                            <small class="fw-bold mt-2 d-block">Sat</small>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- TAB 2: UC13 - EMPLOYEE MANAGEMENT -->
+            <div id="tab-employees" class="tab-section d-none">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header bg-primary text-white"><h5 class="mb-0">UC13: Employee Management</h5></div>
+                    <div class="card-body bg-white">
+                        <form id="employeeForm" class="row g-3 mb-3">
+                            <div class="col-md-3"><input type="text" id="empUsername" class="form-control" placeholder="Username" required></div>
+                            <div class="col-md-3"><input type="password" id="empPassword" class="form-control" placeholder="Password" required></div>
+                            <div class="col-md-3"><input type="text" id="empFullName" class="form-control" placeholder="Full Name" required></div>
+                            <div class="col-md-3">
+                                <select id="empRole" class="form-select" required>
+                                    <option value="">Select Role</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Staff">Staff</option>
+                                    <option value="Chef">Chef</option>
+                                </select>
+                            </div>
+                            <div class="col-12"><button type="submit" class="btn btn-success">Add Employee</button></div>
+                        </form>
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead class="table-dark">
+                                <tr><th>Username</th><th>Full Name</th><th>Role</th></tr>
+                            </thead>
+                            <tbody id="employeeTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: UC14 - INVENTORY MANAGEMENT -->
+            <div id="tab-inventory" class="tab-section d-none">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-success text-white"><h5 class="mb-0">UC14: Inventory Management</h5></div>
+                    <div class="card-body bg-white">
+                        <form id="inventoryForm" class="row g-3 mb-3">
+                            <div class="col-md-3"><input type="text" id="itemName" class="form-control" placeholder="Item Name" required></div>
+                            <div class="col-md-3"><input type="number" step="0.1" id="itemQuantity" class="form-control" placeholder="Quantity" required></div>
+                            <div class="col-md-3"><input type="text" id="itemUnit" class="form-control" placeholder="Unit (e.g. kg, pcs)" required></div>
+                            <div class="col-md-3"><input type="number" step="0.1" id="itemMinQuantity" class="form-control" placeholder="Min Threshold" required></div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success">Add / Update Inventory</button>
+                                <button type="button" id="btnLowStock" class="btn btn-warning ms-2">View Low Stock Alerts</button>
+                            </div>
+                        </form>
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead class="table-dark">
+                                <tr><th>Item Name</th><th>Quantity</th><th>Unit</th><th>Min Threshold</th></tr>
+                            </thead>
+                            <tbody id="inventoryTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4 & 5 PLACEHOLDERS -->
+            <div id="tab-revenue" class="tab-section d-none"><div class="alert alert-info">Revenue Reporting Module</div></div>
+            <div id="tab-tables" class="tab-section d-none"><div class="alert alert-info">Table Configuration Module</div></div>
         </div>
     </div>
+
+    <script>
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-section').forEach(el => el.classList.add('d-none'));
+            document.querySelectorAll('.sidebar-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).classList.remove('d-none');
+            btn.classList.add('active');
+        }
+    </script>
     <script src="api_client.js"></script>
 </body>
 </html>

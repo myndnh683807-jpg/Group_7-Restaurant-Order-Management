@@ -2,16 +2,48 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.card {
-    border-radius: 8px;
+#wrapper {
+    min-height: 100vh;
 }
 
-.table th, .table td {
-    vertical-align: middle;
+.sidebar {
+    width: 260px;
+    background-color: #d8d8d8;
+    flex-shrink: 0;
 }
 
-.low-stock-row {
-    background-color: #f8d7da !important;
-    color: #842029;
-    font-weight: bold;
+.sidebar-title {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.sidebar-btn {
+    background-color: transparent;
+    color: #111 !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: left;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.sidebar-btn:hover {
+    background-color: #c5c5c5;
+}
+
+.sidebar-btn.active {
+    background-color: #ff3b30 !important; 
+    color: #fff !important;
+}
+
+
+.chart-bar {
+    width: 14%;
+}
+.chart-bar .bar {
+    width: 100%;
+    margin: 0 auto;
 }
