@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>UI-04: Checkout & Payment Processing POS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pos-container">
+        <!-- Cột trái: Hóa đơn chi tiết -->
+        <div class="bill-section">
+            <h3>UI-04: Checkout & Payment Processing POS UC11</h3>
+            <div class="bill-header">
+                <span><strong>ITEMIZED BILL (Order ##OOOOOOOO)</strong></span>
+                <span class="table-tag">Table: T-O5</span>
+            </div>
+            <table>
+                <tr>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Dish name 1</td>
+                    <td>1</td>
+                    <td>$12.99</td>
+                    <td>$12.99</td>
+                </tr>
+                <tr>
+                    <td>Dish name 2</td>
+                    <td>2</td>
+                    <td>$24.00</td>
+                    <td>$48.00</td>
+                </tr>
+            </table>
+            <div class="bill-summary">
+                <p>Subtotal: <span>$60.99</span></p>
+                <p>VAT Tax (8%): <span>$6.28</span></p>
+                <p class="discount">Membership Discount (VIP 10%): <span>-$7.85</span></p>
+                <h2>GRAND TOTAL DUE: <span class="total-price">$59.42</span></h2>
+            </div>
+        </div>
+
+        <!-- Cột phải: Điều khiển thanh toán -->
+        <div class="control-section">
+            <h3>PAYMENT & CHECKOUT CONTROLS</h3>
+            <div class="form-group">
+                <label>Customer Membership Lockup:</label>
+                <div class="search-box">
+                    <input type="text" value="Phone: 0123456789....">
+                    <button>Search</button>
+                </div>
+                <p class="member-name">Member: Name</p>
+                <p class="voucher-text">Voucher Applied: Vip 10% Off Discount</p>
+            </div>
+
+            <div class="form-group">
+                <label>Payment Method Selection:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="payment" checked> (o) Cash</label>
+                    <label><input type="radio" name="payment"> () Credit Cash</label>
+                </div>
+                <label><input type="radio" name="payment"> () E-Wallet / QR Code</label>
+            </div>
+
+            <div class="form-group">
+                <label>Cash Amount Tendered:</label>
+                <input type="text" class="tendered-input" value="$59.42">
+            </div>
+
+            <p class="change-due">Change Due to Customer: $0</p>
+
+            <button class="btn-complete" onclick="processPayment()">COMPLETE PAYMENT & PRINT INVOICE</button>
+        </div>
+    </div>
+    <script src="api_client.js"></script>
+</body>
+</html>
