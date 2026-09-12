@@ -1,0 +1,13 @@
+body {
+    background: #f5f5f5;
+}
+
+.card {
+    max-width: 600px;
+}
+
+.bill-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
