@@ -1,12 +1,7 @@
-# Build output
-build/
-cmake-build-*/
-*.o
+# Build artifacts
+*.obj
 *.exe
-
-# IDE
-.vscode/
-.idea/
-
-# Environment secrets
-.env
+*.pdb
+out/
+build/
+.vs/

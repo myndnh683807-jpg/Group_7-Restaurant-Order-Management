@@ -1,0 +1,226 @@
+/* frontend/ui-03-kitchen/style.css — Màn hình Bếp KDS (UI-03: Gia Hưng) */
+/* CukCuk POS SaaS Light Mode — Kanban Phẳng, Thẻ Tinh Gọn, Nút Vuông Vức */
+
+:root {
+    --pos-primary: #0070ba;
+    --pos-primary-dark: #005a96;
+    --pos-primary-light: #e0f2fe;
+    --pos-success: #16a34a;
+    --pos-warning: #d97706;
+    --pos-danger: #dc2626;
+    --pos-bg: #f4f6f8;
+    --pos-card-bg: #ffffff;
+    --pos-border: #e2e8f0;
+    --pos-text-main: #1e293b;
+    --pos-text-muted: #64748b;
+    --col-bg: #f8fafc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--pos-bg);
+    color: var(--pos-text-main);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar-pos {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--pos-border);
+    padding: 0.65rem 1.25rem;
+}
+
+.navbar-pos .navbar-brand {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--pos-primary);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-pos .nav-link {
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.navbar-pos .nav-link:hover {
+    color: var(--pos-primary);
+    background-color: #f1f5f9;
+}
+
+.navbar-pos .nav-link.active {
+    color: var(--pos-primary);
+    background-color: var(--pos-primary-light);
+    font-weight: 700;
+}
+
+/* Kanban Columns */
+.kanban-col {
+    background: var(--col-bg);
+    border: 1px solid var(--pos-border);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px);
+    overflow: hidden;
+}
+
+.kanban-header {
+    background: #ffffff;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--pos-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kanban-header h6 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.kanban-body {
+    padding: 0.75rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Ticket Card */
+.ticket-card {
+    background: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-left: 4px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.15s ease;
+}
+
+.ticket-card:hover {
+    border-color: #94a3b8;
+}
+
+/* Status variants */
+.ticket-card.border-pending {
+    border-left-color: var(--pos-warning);
+}
+
+.ticket-card.border-preparing {
+    border-left-color: var(--pos-primary);
+}
+
+.ticket-card.border-ready {
+    border-left-color: var(--pos-success);
+}
+
+.ticket-card.border-served {
+    border-left-color: #94a3b8;
+    background: #f8fafc;
+    opacity: 0.85;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-tag {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--pos-text-main);
+    background: #f1f5f9;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--pos-border);
+}
+
+.ticket-time {
+    color: var(--pos-text-muted);
+    font-size: 0.75rem;
+}
+
+.ticket-item-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--pos-text-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-qty {
+    background: #f1f5f9;
+    color: var(--pos-primary);
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    border: 1px solid var(--pos-border);
+}
+
+.ticket-note {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    padding: 0.35rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+/* Square Flat Action Buttons */
+.btn-action-kds {
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 0.45rem 0.75rem;
+    border: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-action-kds:hover {
+    filter: brightness(0.95);
+}
+
+.btn-kds-pending {
+    background-color: var(--pos-primary);
+    color: #ffffff;
+}
+
+.btn-kds-preparing {
+    background-color: var(--pos-success);
+    color: #ffffff;
+}
+
+.btn-kds-ready {
+    background-color: #ffffff;
+    color: var(--pos-success);
+    border: 1px solid var(--pos-success);
+}
+
+.btn-kds-ready:hover {
+    background-color: var(--pos-success);
+    color: #ffffff;
+}

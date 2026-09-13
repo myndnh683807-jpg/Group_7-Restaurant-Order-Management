@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UI-01: Màn hình Ghi Order & Đặt Món chuẩn CukCuk POS — Group 07">
+    <title>CukCuk POS — Bán Hàng & Ghi Order (UI-01)</title>
+
+    <!-- Bootstrap 5.3 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CukCuk POS Light-Mode Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. CukCuk POS Top Navigation Bar -->
+    <header class="pos-topbar">
+        <div class="pos-topbar-left">
+            <a href="/" class="pos-logo" title="Về trang tổng quan">
+                <i class="bi bi-shop me-2"></i>
+                <span class="brand-name">CukCuk <span class="brand-pos">POS</span></span>
+            </a>
+            <div class="vr mx-3 d-none d-md-block opacity-25"></div>
+            <div class="screen-title d-none d-sm-flex align-items-center">
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2 py-1 me-2 fw-semibold">UI-01</span>
+                <span class="fw-bold text-dark">Bán Hàng &bull; Ghi Order Món</span>
+            </div>
+        </div>
+
+        <!-- Quick Switcher to Other 4 Modules -->
+        <nav class="pos-quick-nav d-none d-lg-flex">
+            <a href="/ui-01-order/index.html" class="quick-nav-link active" title="Ghi Order">
+                <i class="bi bi-cart3"></i> Đặt Món
+            </a>
+            <a href="/ui-02-table/index.html" class="quick-nav-link" title="Sơ đồ bàn">
+                <i class="bi bi-grid-3x3-gap-fill"></i> Sơ Đồ Bàn
+            </a>
+            <a href="/ui-03-kitchen/index.html" class="quick-nav-link" title="Bếp chế biến">
+                <i class="bi bi-fire"></i> Bếp (KDS)
+            </a>
+            <a href="/ui-04-pos/index.html" class="quick-nav-link" title="Thu ngân & Thanh toán">
+                <i class="bi bi-receipt-cutoff"></i> Thu Ngân
+            </a>
+            <a href="/ui-05-admin/index.html" class="quick-nav-link" title="Quản trị">
+                <i class="bi bi-shield-lock-fill"></i> Quản Trị
+            </a>
+        </nav>
+
+        <div class="pos-topbar-right">
+            <!-- Table Switcher Box -->
+            <div class="table-picker-box d-flex align-items-center">
+                <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                <span class="small fw-bold text-secondary me-2 text-nowrap">BÀN:</span>
+                <select id="tableSelect" class="form-select form-select-sm table-select-custom">
+                    <option value="1">Bàn 01 (Available)</option>
+                </select>
+            </div>
+
+            <!-- Staff & Clock -->
+            <div class="d-none d-md-flex align-items-center gap-2 text-muted small fw-medium ms-2">
+                <i class="bi bi-clock text-primary"></i>
+                <span id="orderLiveClock">--:--</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. CukCuk 3-Column POS Workspace -->
+    <main class="pos-workspace">
+        
+        <!-- ======================================================== -->
+        <!-- CỘT 1: DANH MỤC THỰC ĐƠN (16% Width)                     -->
+        <!-- ======================================================== -->
+        <aside class="pos-col-categories">
+            <div class="category-header">
+                <i class="bi bi-list-ul me-2 text-primary"></i>
+                <span>NHÓM THỰC ĐƠN</span>
+            </div>
+            <div id="categoryTabs" class="category-list">
+                <!-- Dynamically rendered by api_client.js -->
+            </div>
+            <div class="category-footer">
+                <small class="text-muted fw-semibold">
+                    <i class="bi bi-check-circle-fill text-success me-1"></i>Menu Online
+                </small>
+            </div>
+        </aside>
+
+        <!-- ======================================================== -->
+        <!-- CỘT 2: LƯỚI MÓN ĂN (54% Width)                           -->
+        <!-- ======================================================== -->
+        <section class="pos-col-menu">
+            <!-- Filter & Search Toolbar -->
+            <div class="menu-toolbar">
+                <div class="search-box">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" id="foodSearchInput" class="form-control form-control-sm search-input" placeholder="Tìm nhanh món ăn theo tên...">
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <span id="menuItemCount" class="badge bg-light text-secondary border px-2 py-1 fw-semibold">
+                        Đang hiển thị món
+                    </span>
+                </div>
+            </div>
+
+            <!-- Food Grid Container -->
+            <div class="menu-grid-scroll">
+                <div id="menuGrid" class="row g-2 g-md-3">
+                    <!-- Food Cards rendered dynamically by api_client.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- CỘT 3: HÓA ĐƠN / ORDER SUMMARY (30% Width)               -->
+        <!-- ======================================================== -->
+        <aside class="pos-col-cart">
+            <!-- Cart Header -->
+            <div class="cart-header">
+                <div class="d-flex align-items-center">
+                    <div class="cart-icon-wrap me-2">
+                        <i class="bi bi-cart-check-fill"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">HÓA ĐƠN GỌI MÓN</h6>
+                        <small class="text-muted" id="cartTableDisplay">Đang chọn: Bàn 01</small>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-primary text-white rounded-pill px-2 py-1" id="cartCount">0</span>
+                    <button class="btn btn-sm btn-outline-danger p-1 border-0" id="btnClearCart" title="Xóa toàn bộ giỏ">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cart Items List (Scrollable) -->
+            <div class="cart-items-wrapper">
+                <div id="cartItems" class="cart-items-list">
+                    <!-- Dynamic cart item rows rendered by api_client.js -->
+                </div>
+            </div>
+
+            <!-- Cart Calculation & Bottom Actions -->
+            <div class="cart-footer">
+                <!-- Summary Pricing -->
+                <div class="cart-summary-box mb-3">
+                    <div class="d-flex justify-content-between text-secondary small mb-1">
+                        <span>Tiền món (Tạm tính):</span>
+                        <span id="cartTotal" class="fw-bold text-dark">$0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-secondary small mb-1">
+                        <span>Thuế VAT (8%):</span>
+                        <span id="cartVat" class="fw-semibold text-dark">$0.00</span>
+                    </div>
+                    <hr class="my-2 border-secondary opacity-25">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                        <span class="fw-bold text-dark fs-6">TỔNG CỘNG:</span>
+                        <span id="cartFinal" class="fw-bolder fs-4 text-primary">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Big POS Action Buttons -->
+                <div class="d-grid gap-2">
+                    <!-- Nút Gửi Bếp (To, chuẩn POS CukCuk) -->
+                    <button id="btnSubmitOrder" class="btn btn-cukcuk-order" disabled>
+                        <i class="bi bi-send-fill me-1"></i> GỬI BẾP (ORDER)
+                    </button>
+
+                    <!-- Nút phụ: Chuyển nhanh sang Thu Ngân POS để thanh toán -->
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <a href="/ui-04-pos/index.html" class="btn btn-cukcuk-pay w-100">
+                                <i class="bi bi-credit-card-fill me-1"></i> Thu Ngân
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a href="/ui-02-table/index.html" class="btn btn-cukcuk-secondary w-100">
+                                <i class="bi bi-arrow-left-right me-1"></i> Đổi Bàn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- External API Client -->
+    <script src="api_client.js"></script>
+
+    <!-- Topbar Clock & Table Title Sync -->
+    <script>
+        function updateOrderClock() {
+            const now = new Date();
+            const el = document.getElementById('orderLiveClock');
+            if (el) {
+                el.innerText = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            }
+        }
+        setInterval(updateOrderClock, 1000);
+        updateOrderClock();
+
+        // Sync table display with select
+        const tSelect = document.getElementById('tableSelect');
+        const tDisplay = document.getElementById('cartTableDisplay');
+        if (tSelect && tDisplay) {
+            tSelect.addEventListener('change', () => {
+                const text = tSelect.options[tSelect.selectedIndex]?.text || '';
+                tDisplay.innerText = `Đang chọn: ${text}`;
+            });
+        }
+    </script>
+</body>
+</html>

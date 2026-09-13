@@ -41,6 +41,11 @@ void Database::connect() {
     }
 
     try {
+        std::cout << "[Database] Dang ket noi toi MySQL tai "
+                  << config_.host << ":" << config_.port
+                  << " (user: " << config_.user
+                  << ", db: " << config_.database << ")...\n";
+
         // Tạo session qua MySQL X Protocol.
         session_ = std::make_unique<mysqlx::Session>(
             mysqlx::SessionOption::HOST,   config_.host,
@@ -54,11 +59,19 @@ void Database::connect() {
 
         std::cout << "[Database] Ket noi thanh cong toi "
                   << config_.host << ":" << config_.port
-                  << "/" << config_.database << "\n";
+                  << "/" << config_.database << "\n\n";
     } catch (const mysqlx::Error& e) {
         session_.reset();
+        std::cerr << "[Database] Loi ket noi MySQL: " << e.what() << "\n";
+        throw;
+    } catch (const std::exception& e) {
+        session_.reset();
         std::cerr << "[Database] Loi ket noi: " << e.what() << "\n";
-        throw;  // Re-throw để caller xử lý.
+        throw;
+    } catch (...) {
+        session_.reset();
+        std::cerr << "[Database] Loi khong xac dinh khi khoi tao session MySQL.\n";
+        throw std::runtime_error("Loi khong xac dinh khi ket noi MySQL.");
     }
 }
 
@@ -94,8 +107,18 @@ const DbConfig& Database::getConfig() const noexcept {
 DbConfig Database::loadConfig() const {
     DbConfig cfg;
 
-    // 1) Thử đọc file .env trước (ưu tiên thấp hơn biến môi trường).
-    auto envMap = parseEnvFile(".env");
+    // 1) Thử đọc file .env ở nhiều vị trí (thư mục chạy hoặc các cấp thư mục cha).
+    std::unordered_map<std::string, std::string> envMap;
+    const std::vector<std::string> searchPaths = {
+        ".env", "../.env", "../../.env", "../../../.env"
+    };
+    for (const auto& p : searchPaths) {
+        envMap = parseEnvFile(p);
+        if (!envMap.empty()) {
+            std::cout << "[Database] Da nap cau hinh tu file: " << p << "\n";
+            break;
+        }
+    }
 
     // Helper: lấy giá trị từ biến môi trường, fallback sang envMap, rồi default.
     auto resolve = [&](const char* envKey, const std::string& fallback) -> std::string {

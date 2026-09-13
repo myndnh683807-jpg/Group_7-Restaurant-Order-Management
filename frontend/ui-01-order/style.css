@@ -1,0 +1,586 @@
+/* frontend/ui-01-order/style.css */
+/* Giao diện Bán Hàng & Ghi Order chuẩn CukCuk POS (MISA) — Light Mode Chuyên Nghiệp */
+
+:root {
+    --cukcuk-primary: #0070ba;
+    --cukcuk-primary-hover: #005a96;
+    --cukcuk-primary-light: #e0f2fe;
+    --cukcuk-primary-border: #bae6fd;
+    --cukcuk-success: #16a34a;
+    --cukcuk-success-hover: #15803d;
+    --cukcuk-warning: #ea580c;
+    --cukcuk-danger: #dc2626;
+    --cukcuk-bg: #f4f6f8;
+    --cukcuk-surface: #ffffff;
+    --cukcuk-border: #e2e8f0;
+    --cukcuk-border-subtle: #f1f5f9;
+    --cukcuk-text-main: #1e293b;
+    --cukcuk-text-muted: #64748b;
+    --cukcuk-text-light: #94a3b8;
+    --topbar-height: 56px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cukcuk-bg);
+    color: var(--cukcuk-text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   1. TOPBAR CUKCUK POS
+   ========================================================================== */
+.pos-topbar {
+    height: var(--topbar-height);
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--cukcuk-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 100;
+}
+
+.pos-topbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.pos-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--cukcuk-primary);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.5px;
+}
+
+.pos-logo i {
+    font-size: 1.3rem;
+}
+
+.brand-pos {
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.pos-quick-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.quick-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-md);
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.15s ease;
+}
+
+.quick-nav-link:hover {
+    background-color: #f1f5f9;
+    color: var(--cukcuk-primary);
+}
+
+.quick-nav-link.active {
+    background-color: var(--cukcuk-primary-light);
+    color: var(--cukcuk-primary);
+    font-weight: 700;
+}
+
+.pos-topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.table-picker-box {
+    background-color: #f8fafc;
+    border: 1px solid var(--cukcuk-border);
+    border-radius: var(--radius-md);
+    padding: 0.25rem 0.5rem;
+}
+
+.table-select-custom {
+    border: none;
+    background-color: transparent;
+    font-weight: 700;
+    color: var(--cukcuk-primary);
+    font-size: 0.88rem;
+    padding-right: 1.75rem;
+    cursor: pointer;
+}
+
+.table-select-custom:focus {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+/* ==========================================================================
+   2. 3-COLUMN WORKSPACE
+   ========================================================================== */
+.pos-workspace {
+    display: flex;
+    height: calc(100vh - var(--topbar-height));
+    width: 100vw;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   CỘT 1: DANH MỤC THỰC ĐƠN (16% WIDTH)
+   -------------------------------------------------------------------------- */
+.pos-col-categories {
+    width: 17%;
+    min-width: 180px;
+    max-width: 240px;
+    background-color: #ffffff;
+    border-right: 1px solid var(--cukcuk-border);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.category-header {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--cukcuk-border);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--cukcuk-text-muted);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.category-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+/* CukCuk Vertical Category Button */
+.category-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 0.35rem;
+    background-color: #ffffff;
+    color: #334155;
+    border: 1px solid var(--cukcuk-border);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-align: left;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.category-btn:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    color: var(--cukcuk-primary);
+}
+
+.category-btn.active {
+    background-color: var(--cukcuk-primary-light);
+    border-color: var(--cukcuk-primary);
+    color: var(--cukcuk-primary);
+    font-weight: 700;
+    border-left: 4px solid var(--cukcuk-primary);
+}
+
+.category-footer {
+    padding: 0.65rem 1rem;
+    border-top: 1px solid var(--cukcuk-border);
+    background-color: #f8fafc;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   CỘT 2: LƯỚI MÓN ĂN (53% WIDTH)
+   -------------------------------------------------------------------------- */
+.pos-col-menu {
+    flex-grow: 1;
+    background-color: var(--cukcuk-bg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.menu-toolbar {
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--cukcuk-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.search-box {
+    position: relative;
+    max-width: 360px;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.search-input {
+    padding-left: 32px;
+    border-radius: 20px;
+    border: 1px solid var(--cukcuk-border);
+    background-color: #f8fafc;
+    font-size: 0.85rem;
+}
+
+.search-input:focus {
+    background-color: #ffffff;
+    border-color: var(--cukcuk-primary);
+    box-shadow: 0 0 0 3px rgba(0, 112, 186, 0.15);
+}
+
+.menu-grid-scroll {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* CukCuk POS Food Card */
+.food-card {
+    background-color: var(--cukcuk-surface);
+    border: 1px solid var(--cukcuk-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.food-card:hover {
+    border-color: var(--cukcuk-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.food-img-wrapper {
+    height: 110px;
+    background-color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.75rem;
+    position: relative;
+    border-bottom: 1px solid var(--cukcuk-border);
+}
+
+.food-badge-price {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background-color: rgba(15, 23, 42, 0.85);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+}
+
+.food-card-body {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.food-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+}
+
+.food-desc {
+    font-size: 0.78rem;
+    color: var(--cukcuk-text-muted);
+    margin-bottom: 0.65rem;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.btn-pos-add {
+    background-color: #ffffff;
+    color: var(--cukcuk-primary);
+    border: 1px solid var(--cukcuk-primary);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    transition: all 0.15s ease;
+}
+
+.btn-pos-add:hover {
+    background-color: var(--cukcuk-primary);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   CỘT 3: HÓA ĐƠN GỌI MÓN (30% WIDTH)
+   -------------------------------------------------------------------------- */
+.pos-col-cart {
+    width: 30%;
+    min-width: 320px;
+    max-width: 440px;
+    background-color: #ffffff;
+    border-left: 1px solid var(--cukcuk-border);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cart-header {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--cukcuk-border);
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-icon-wrap {
+    width: 34px;
+    height: 34px;
+    background-color: var(--cukcuk-primary-light);
+    color: var(--cukcuk-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.cart-items-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0.75rem;
+}
+
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Cart item row */
+.cart-item-row {
+    background-color: #ffffff;
+    border: 1px solid var(--cukcuk-border);
+    border-radius: var(--radius-md);
+    padding: 0.65rem 0.75rem;
+    transition: background-color 0.15s ease;
+}
+
+.cart-item-row:hover {
+    background-color: #f8fafc;
+}
+
+.cart-item-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.cart-item-price {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--cukcuk-primary);
+}
+
+.cukcuk-qty-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--cukcuk-border);
+    background-color: #ffffff;
+    color: #334155;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.cukcuk-qty-btn:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+.cukcuk-qty-val {
+    min-width: 28px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #0f172a;
+}
+
+.cart-note-input {
+    font-size: 0.78rem;
+    border: 1px dashed #cbd5e1;
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    background-color: #f8fafc;
+}
+
+.cart-note-input:focus {
+    border-style: solid;
+    border-color: var(--cukcuk-primary);
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+/* Cart Footer & Action Buttons */
+.cart-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--cukcuk-border);
+    background-color: #ffffff;
+}
+
+.cart-summary-box {
+    background-color: #f8fafc;
+    border: 1px solid var(--cukcuk-border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 0.9rem;
+}
+
+/* Big Action Buttons CukCuk Style */
+.btn-cukcuk-order {
+    background-color: var(--cukcuk-primary);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.3px;
+    transition: background-color 0.15s ease;
+}
+
+.btn-cukcuk-order:hover:not(:disabled) {
+    background-color: var(--cukcuk-primary-hover);
+    color: #ffffff;
+}
+
+.btn-cukcuk-order:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.btn-cukcuk-pay {
+    background-color: var(--cukcuk-success);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0.55rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease;
+}
+
+.btn-cukcuk-pay:hover {
+    background-color: var(--cukcuk-success-hover);
+    color: #ffffff;
+}
+
+.btn-cukcuk-secondary {
+    background-color: #ffffff;
+    color: #475569;
+    border: 1px solid var(--cukcuk-border);
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: var(--radius-md);
+    padding: 0.55rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.btn-cukcuk-secondary:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+/* Toast Notifications */
+.pos-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: toast-in 0.25s ease-out;
+}
+
+@keyframes toast-in {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

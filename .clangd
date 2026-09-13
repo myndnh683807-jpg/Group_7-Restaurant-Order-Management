@@ -1,0 +1,25 @@
+# .clangd — Cấu hình clangd Language Server cho dự án Restaurant Order Management
+CompileFlags:
+  Add:
+    - -std=c++17
+    - -Wno-unknown-pragmas
+    - -Wno-unused-parameter
+    - -D_CRT_SECURE_NO_WARNINGS
+    - -Isrc
+    - -ID:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src
+    - -Ibuild/_deps/crow-src/include
+    - -ID:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include
+    - -Ibuild/_deps/nlohmann_json-src/include
+    - -ID:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include
+    - -IC:/Program Files/MySQL/MySQL Connector C++ 8.0/include
+    - -IC:/Program Files/MySQL/Connector C++ 8.0/include
+    - -IC:/Program Files/MySQL/MySQL Server 8.0/include
+  CompilationDatabase: build
+
+Diagnostics:
+  UnusedIncludes: None
+  MissingIncludes: None
+  ClangTidy:
+    Remove:
+      - readability-magic-numbers
+

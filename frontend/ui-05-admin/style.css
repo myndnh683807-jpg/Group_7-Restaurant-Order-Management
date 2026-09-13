@@ -1,0 +1,183 @@
+/* frontend/ui-05-admin/style.css — Giao diện Quản trị & Dashboard (UI-05: Hà My) */
+/* CukCuk POS SaaS Light Mode — Bảng viền mảnh, nền trắng, chữ xám đậm, không bóng đổ */
+
+:root {
+    --pos-primary: #0070ba;
+    --pos-primary-dark: #005a96;
+    --pos-primary-light: #e0f2fe;
+    --pos-success: #16a34a;
+    --pos-warning: #d97706;
+    --pos-danger: #dc2626;
+    --pos-bg: #f4f6f8;
+    --pos-card-bg: #ffffff;
+    --pos-border: #e2e8f0;
+    --pos-text-main: #1e293b;
+    --pos-text-muted: #64748b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--pos-bg);
+    color: var(--pos-text-main);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar-pos {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--pos-border);
+    padding: 0.65rem 1.25rem;
+}
+
+.navbar-pos .navbar-brand {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--pos-primary);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-pos .nav-link {
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.navbar-pos .nav-link:hover {
+    color: var(--pos-primary);
+    background-color: #f1f5f9;
+}
+
+.navbar-pos .nav-link.active {
+    color: var(--pos-primary);
+    background-color: var(--pos-primary-light);
+    font-weight: 700;
+}
+
+/* Admin Tabs */
+.admin-tab-nav {
+    background-color: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-pills-admin .nav-link {
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+}
+
+.nav-pills-admin .nav-link:hover {
+    background-color: #f8fafc;
+    color: var(--pos-primary);
+}
+
+.nav-pills-admin .nav-link.active {
+    background-color: var(--pos-primary);
+    color: #ffffff;
+}
+
+/* KPI Cards */
+.kpi-card {
+    background: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.15s ease;
+}
+
+.kpi-card:hover {
+    border-color: #94a3b8;
+}
+
+.kpi-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+}
+
+/* Admin Panels & Tables */
+.admin-panel {
+    background: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.admin-table {
+    border: 1px solid var(--pos-border);
+    background-color: #ffffff;
+}
+
+.admin-table thead th {
+    background-color: #f8fafc;
+    color: var(--pos-text-muted);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--pos-border);
+    padding: 0.75rem 1rem;
+}
+
+.admin-table tbody td {
+    padding: 0.75rem 1rem;
+    color: var(--pos-text-main);
+    border-bottom: 1px solid var(--pos-border);
+    font-size: 0.88rem;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Stock Progress Bar */
+.stock-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.stock-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Light Modals */
+.modal-content-light {
+    background-color: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 8px;
+    color: var(--pos-text-main);
+}
+
+.modal-content-light .modal-header {
+    border-bottom: 1px solid var(--pos-border);
+    padding: 1rem 1.25rem;
+}
+
+.modal-content-light .modal-footer {
+    border-top: 1px solid var(--pos-border);
+    padding: 0.85rem 1.25rem;
+}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UI-05: Quản trị & Dashboard — CukCuk POS System">
+    <title>Quản Trị & Báo Cáo (UI-05) — CukCuk POS</title>
+
+    <!-- Bootstrap 5.3 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Flat Light Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Unified SaaS Navbar -->
+    <header class="navbar navbar-expand-lg navbar-pos sticky-top">
+        <div class="container-fluid px-lg-4">
+            <a class="navbar-brand" href="/">
+                <span class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded p-1" style="width: 28px; height: 28px; font-size: 0.9rem;">
+                    <i class="bi bi-shop"></i>
+                </span>
+                <span>CukCuk POS</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="bi bi-grid-1x2-fill me-1"></i> Tổng Quan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ui-01-order/index.html"><i class="bi bi-cart3 me-1"></i> Đặt Món (Hậu)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ui-02-table/index.html"><i class="bi bi-grid-3x3-gap-fill me-1"></i> Sơ Đồ Bàn (Thăng)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ui-03-kitchen/index.html"><i class="bi bi-fire me-1"></i> Bếp KDS (Hưng)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ui-04-pos/index.html"><i class="bi bi-receipt-cutoff me-1"></i> Thu Ngân (Phương)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/ui-05-admin/index.html"><i class="bi bi-shield-lock-fill me-1"></i> Quản Trị (My)</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-sm btn-outline-secondary bg-white" onclick="init()">
+                        <i class="bi bi-arrow-clockwise me-1"></i> Làm Mới
+                    </button>
+                    <span class="badge bg-light text-secondary border px-3 py-2">
+                        <i class="bi bi-person-fill text-primary me-1"></i> Phụ trách: <strong>Hà My</strong>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid px-lg-4 py-3">
+        <!-- Top Navigation Pills for Admin Sections -->
+        <div class="admin-tab-nav d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+            <ul class="nav nav-pills nav-pills-admin gap-1 mb-0" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tab-overview-btn" data-bs-toggle="pill" data-bs-target="#tab-overview" type="button" role="tab">
+                        <i class="bi bi-speedometer2 me-1"></i> Tổng Quan KPI
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-employee-btn" data-bs-toggle="pill" data-bs-target="#tab-employee" type="button" role="tab">
+                        <i class="bi bi-people me-1"></i> Quản Lý Nhân Viên (UC13)
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-inventory-btn" data-bs-toggle="pill" data-bs-target="#tab-inventory" type="button" role="tab">
+                        <i class="bi bi-box-seam me-1"></i> Quản Lý Kho Hàng (UC14)
+                    </button>
+                </li>
+            </ul>
+            <div class="text-muted small">
+                <i class="bi bi-shield-check text-success me-1"></i> Quyền Quản Trị Hệ Thống (Administrator)
+            </div>
+        </div>
+
+        <!-- Tab Panes -->
+        <div class="tab-content" id="adminTabContent">
+            <!-- 1. Overview Tab -->
+            <div class="tab-pane fade show active" id="tab-overview" role="tabpanel">
+                <div class="row g-3 mb-3">
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase">Doanh Thu Hôm Nay</div>
+                                    <div id="kpiRevenue" class="fs-4 fw-bold text-success mt-1">$0.00</div>
+                                </div>
+                                <div class="kpi-icon bg-success bg-opacity-10 text-success"><i class="bi bi-currency-dollar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase">Bàn Đang Phục Vụ</div>
+                                    <div id="kpiTables" class="fs-4 fw-bold text-primary mt-1">0 / 0</div>
+                                </div>
+                                <div class="kpi-icon bg-primary bg-opacity-10 text-primary"><i class="bi bi-grid-3x3-gap-fill"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase">Đơn Hàng Đang Xử Lý</div>
+                                    <div id="kpiOrders" class="fs-4 fw-bold text-warning mt-1">0 đang xử lý</div>
+                                </div>
+                                <div class="kpi-icon bg-warning bg-opacity-10 text-warning"><i class="bi bi-hourglass-split"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase">Cảnh Báo Kho Tồn</div>
+                                    <div id="kpiLowStock" class="fs-4 fw-bold text-danger mt-1">0 mặt hàng</div>
+                                </div>
+                                <div class="kpi-icon bg-danger bg-opacity-10 text-danger"><i class="bi bi-exclamation-triangle-fill"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-panel text-center py-4">
+                    <h6 class="fw-bold mb-1 text-dark">Hệ Thống Nhà Hàng Đang Vận Hành Ổn Định</h6>
+                    <p class="text-muted small mb-3">Backend C++ Crow API và Cơ sở dữ liệu MySQL X DevAPI đồng bộ liên tục qua 9 controller.</p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="/ui-01-order/index.html" class="btn btn-sm btn-outline-primary fw-semibold px-3">
+                            <i class="bi bi-cart3 me-1"></i> Mở Màn Hình Đặt Món
+                        </a>
+                        <a href="/ui-03-kitchen/index.html" class="btn btn-sm btn-outline-danger fw-semibold px-3">
+                            <i class="bi bi-fire me-1"></i> Mở Màn Hình Bếp KDS
+                        </a>
+                        <a href="/ui-04-pos/index.html" class="btn btn-sm btn-outline-success fw-semibold px-3">
+                            <i class="bi bi-receipt me-1"></i> Mở Màn Hình Thu Ngân POS
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Employees Tab (UC13) -->
+            <div class="tab-pane fade" id="tab-employee" role="tabpanel">
+                <div class="admin-panel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-person-badge text-primary me-1"></i>Danh Sách Nhân Sự & Tài Khoản</h6>
+                            <span class="text-muted small">Phân quyền vai trò phục vụ, đầu bếp, thu ngân và quản trị viên</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm fw-semibold px-3" data-bs-toggle="modal" data-bs-target="#addEmpModal">
+                            <i class="bi bi-plus-lg me-1"></i> Thêm Nhân Viên Mới
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 80px;">Mã</th>
+                                    <th>Họ Tên & Username</th>
+                                    <th style="width: 150px;">Vai Trò</th>
+                                    <th style="width: 180px;">Số Điện Thoại</th>
+                                    <th class="text-end" style="width: 120px;">Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTableBody">
+                                <!-- Dynamic employees -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Inventory Tab (UC14) -->
+            <div class="tab-pane fade" id="tab-inventory" role="tabpanel">
+                <div class="admin-panel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-boxes text-primary me-1"></i>Quản Lý Kho Nguyên Vật Liệu</h6>
+                            <span class="text-muted small">Theo dõi tồn kho, định mức an toàn và điều chỉnh số lượng nguyên liệu</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm fw-semibold px-3" data-bs-toggle="modal" data-bs-target="#addInvModal">
+                            <i class="bi bi-plus-lg me-1"></i> Nhập Mặt Hàng Mới
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 80px;">Mã</th>
+                                    <th>Tên Nguyên Liệu</th>
+                                    <th style="width: 250px;">Tồn Kho Hiện Tại</th>
+                                    <th style="width: 160px;">Mức An Toàn</th>
+                                    <th class="text-end" style="width: 200px;">Điều Chỉnh Số Lượng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTableBody">
+                                <!-- Dynamic inventory -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Thêm Nhân Viên (UC13) (Light Mode) -->
+    <div class="modal fade" id="addEmpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-light">
+                <div class="modal-header">
+                    <h6 class="modal-title fw-bold text-dark"><i class="bi bi-person-plus text-primary me-2"></i>Thêm Nhân Viên Mới</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="formAddEmp">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Tên đăng nhập (Username):</label>
+                            <input type="text" id="empUsername" class="form-control" required placeholder="vd: staff02">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Mật khẩu:</label>
+                            <input type="password" id="empPassword" class="form-control" required placeholder="••••••••">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Họ và tên:</label>
+                            <input type="text" id="empFullName" class="form-control" required placeholder="vd: Nguyễn Văn A">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Vai trò (Role):</label>
+                            <select id="empRole" class="form-select">
+                                <option value="Staff">Phục vụ (Staff)</option>
+                                <option value="Chef">Đầu bếp (Chef)</option>
+                                <option value="Cashier">Thu ngân (Cashier)</option>
+                                <option value="Admin">Quản lý (Admin)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Số điện thoại:</label>
+                            <input type="text" id="empPhone" class="form-control" placeholder="0901234567">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-light border" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-sm btn-primary px-3 fw-semibold">Lưu Nhân Viên</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Thêm Mặt Hàng Kho (UC14) (Light Mode) -->
+    <div class="modal fade" id="addInvModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-light">
+                <div class="modal-header">
+                    <h6 class="modal-title fw-bold text-dark"><i class="bi bi-box-arrow-in-down text-primary me-2"></i>Thêm Nguyên Liệu Vào Kho</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="formAddInv">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Tên nguyên liệu:</label>
+                            <input type="text" id="invName" class="form-control" required placeholder="vd: Thịt heo xay">
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label text-secondary small fw-semibold">Số lượng nhập:</label>
+                                <input type="number" id="invQty" class="form-control" required min="0" placeholder="10">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label text-secondary small fw-semibold">Đơn vị tính:</label>
+                                <input type="text" id="invUnit" class="form-control" required placeholder="kg, gói, chai...">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Mức cảnh báo tối thiểu:</label>
+                            <input type="number" id="invMin" class="form-control" required min="0" placeholder="5">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-light border" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-sm btn-primary px-3 fw-semibold">Lưu Vào Kho</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- External API Client -->
+    <script src="api_client.js"></script>
+</body>
+</html>
