@@ -1,0 +1,137 @@
+﻿[
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/main.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/main.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/EmployeeApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/EmployeeApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/InventoryApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/InventoryApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/KitchenApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/KitchenApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/MenuApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/MenuApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/OrderApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/OrderApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/PaymentApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/PaymentApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/ReportApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/ReportApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/ServiceApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/ServiceApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/TableApiController.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/controller/TableApiController.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/database/Database.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/database/Database.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Category.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Category.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Employee.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Employee.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Inventory.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Inventory.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Invoice.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Invoice.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/MenuItem.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/MenuItem.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Order.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Order.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/OrderItem.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/OrderItem.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Table.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/model/Table.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/EmployeeRepository.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/EmployeeRepository.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/InventoryRepository.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/InventoryRepository.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/InvoiceRepository.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/InvoiceRepository.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/MenuRepository.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/MenuRepository.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/OrderRepository.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/OrderRepository.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/TableRepository.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/repository/TableRepository.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/utils/JsonHelper.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/utils/JsonHelper.cpp"
+    },
+    {
+        "directory":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management",
+        "command":  "clang-cl /std:c++17 /EHsc -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/crow-src/include\" -I\"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/build/_deps/nlohmann_json-src/include\" -I\"C:/Program Files/MySQL/MySQL Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/Connector C++ 8.0/include\" -I\"C:/Program Files/MySQL/MySQL Server 8.0/include\" -c \"D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/utils/Validator.cpp\"",
+        "file":  "D:/DoAn_Web_C++/Group_7-Restaurant-Order-Management/src/utils/Validator.cpp"
+    }
+]

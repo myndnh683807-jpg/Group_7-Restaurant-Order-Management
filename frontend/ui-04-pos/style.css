@@ -1,0 +1,184 @@
+/* frontend/ui-04-pos/style.css — Giao diện Thu Ngân & POS (UI-04:  ) */
+/* CukCuk POS SaaS Light Mode — Bảng viền mảnh, nền trắng, chữ xám đậm, không bóng đổ */
+
+:root {
+    --pos-primary: #0070ba;
+    --pos-primary-dark: #005a96;
+    --pos-primary-light: #e0f2fe;
+    --pos-success: #16a34a;
+    --pos-success-hover: #15803d;
+    --pos-warning: #d97706;
+    --pos-danger: #dc2626;
+    --pos-bg: #f4f6f8;
+    --pos-card-bg: #ffffff;
+    --pos-border: #e2e8f0;
+    --pos-text-main: #1e293b;
+    --pos-text-muted: #64748b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--pos-bg);
+    color: var(--pos-text-main);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar-pos {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--pos-border);
+    padding: 0.65rem 1.25rem;
+}
+
+.navbar-pos .navbar-brand {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--pos-primary);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-pos .nav-link {
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.navbar-pos .nav-link:hover {
+    color: var(--pos-primary);
+    background-color: #f1f5f9;
+}
+
+.navbar-pos .nav-link.active {
+    color: var(--pos-primary);
+    background-color: var(--pos-primary-light);
+    font-weight: 700;
+}
+
+/* POS Main Card Panels */
+.pos-panel {
+    background: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+/* Order selection card */
+.pos-order-card {
+    background: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-bottom: 0.5rem;
+}
+
+.pos-order-card:hover {
+    border-color: #94a3b8;
+    background-color: #f8fafc;
+}
+
+.pos-order-card.active {
+    border: 1.5px solid var(--pos-primary);
+    background-color: var(--pos-primary-light);
+}
+
+/* POS Table */
+.pos-table {
+    border: 1px solid var(--pos-border);
+    background-color: #ffffff;
+}
+
+.pos-table thead th {
+    background-color: #f8fafc;
+    color: var(--pos-text-muted);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--pos-border);
+    padding: 0.75rem 1rem;
+}
+
+.pos-table tbody td {
+    padding: 0.75rem 1rem;
+    color: var(--pos-text-main);
+    border-bottom: 1px solid var(--pos-border);
+    font-size: 0.88rem;
+}
+
+.pos-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Payment Method Button */
+.btn-method {
+    background: #ffffff;
+    border: 1px solid var(--pos-border);
+    color: #475569;
+    border-radius: 6px;
+    padding: 0.75rem 0.5rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-method:hover {
+    border-color: #94a3b8;
+    background-color: #f8fafc;
+}
+
+.btn-method.active {
+    border: 1.5px solid var(--pos-primary);
+    background-color: var(--pos-primary-light);
+    color: var(--pos-primary);
+}
+
+/* Checkout Button */
+.btn-checkout {
+    background-color: var(--pos-success);
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    padding: 0.85rem;
+    font-size: 1rem;
+    transition: background-color 0.15s ease;
+    width: 100%;
+}
+
+.btn-checkout:hover {
+    background-color: var(--pos-success-hover);
+    color: #ffffff;
+}
+
+.btn-checkout:disabled {
+    background-color: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* Receipt Paper (Light & Clean) */
+.receipt-paper {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid var(--pos-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+}

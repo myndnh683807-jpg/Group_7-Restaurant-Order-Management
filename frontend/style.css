@@ -1,0 +1,314 @@
+/* frontend/style.css — Giao diện Trang chủ Dashboard tổng (Restaurant OS) */
+/* Chuẩn SaaS Light Mode — CukCuk POS Style: Phẳng, Viền mỏng, Không Gradient, Không Shadow dày */
+
+:root {
+    --pos-primary: #0070ba;
+    --pos-primary-dark: #005a96;
+    --pos-primary-light: #e0f2fe;
+    --pos-success: #16a34a;
+    --pos-warning: #d97706;
+    --pos-danger: #dc2626;
+    --pos-bg: #f4f6f8;
+    --pos-sidebar-bg: #ffffff;
+    --pos-border: #e2e8f0;
+    --pos-text-main: #1e293b;
+    --pos-text-muted: #64748b;
+    --pos-card-bg: #ffffff;
+    --sidebar-width: 250px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--pos-bg);
+    color: var(--pos-text-main);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Sidebar Layout */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--pos-sidebar-bg);
+    border-right: 1px solid var(--pos-border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1020;
+}
+
+.sidebar-brand {
+    padding: 1.15rem 1.25rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--pos-border);
+    text-decoration: none;
+    color: var(--pos-text-main);
+}
+
+.sidebar-brand-icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--pos-primary);
+    color: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.sidebar-brand-text h5 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--pos-primary);
+    letter-spacing: -0.5px;
+}
+
+.sidebar-brand-text small {
+    font-size: 0.7rem;
+    color: var(--pos-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0.85rem 0.65rem;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.sidebar-section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--pos-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 0.65rem 0.75rem 0.25rem 0.75rem;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 0.75rem;
+    color: #334155;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 6px;
+    margin-bottom: 0.2rem;
+    transition: all 0.15s ease;
+}
+
+.sidebar-link i {
+    font-size: 1.15rem;
+    margin-right: 0.75rem;
+    color: #64748b;
+    transition: color 0.15s ease;
+}
+
+.sidebar-link:hover {
+    background-color: #f1f5f9;
+    color: var(--pos-primary);
+}
+
+.sidebar-link:hover i {
+    color: var(--pos-primary);
+}
+
+.sidebar-link.active {
+    background-color: var(--pos-primary-light);
+    color: var(--pos-primary);
+    border-left: 3.5px solid var(--pos-primary);
+    font-weight: 700;
+}
+
+.sidebar-link.active i {
+    color: var(--pos-primary);
+}
+
+.sidebar-footer {
+    padding: 0.85rem 1rem;
+    border-top: 1px solid var(--pos-border);
+    background-color: #f8fafc;
+}
+
+/* Main Content Area */
+.main-wrapper {
+    margin-left: var(--sidebar-width);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.top-navbar {
+    height: 58px;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--pos-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* KPI Card */
+.kpi-card {
+    background-color: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.kpi-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.kpi-value {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--pos-text-main);
+    line-height: 1.2;
+}
+
+.kpi-label {
+    font-size: 0.72rem;
+    color: var(--pos-text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Module Grid Cards */
+.module-grid-card {
+    background-color: #ffffff;
+    border: 1px solid var(--pos-border);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: border-color 0.15s ease;
+}
+
+.module-grid-card:hover {
+    border-color: var(--pos-primary);
+}
+
+.module-header {
+    padding: 1rem 1.15rem 0.5rem 1.15rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+}
+
+.module-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.module-title-wrap h5 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 0 0 0.2rem 0;
+    color: #0f172a;
+}
+
+.module-owner-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+}
+
+.module-body {
+    padding: 0.5rem 1.15rem 1.15rem 1.15rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.module-desc {
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+}
+
+.btn-pos-primary {
+    background-color: var(--pos-primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: none;
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+    width: 100%;
+}
+
+.btn-pos-primary:hover {
+    background-color: var(--pos-primary-dark);
+    color: #ffffff;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+@media (max-width: 991px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-wrapper {
+        margin-left: 0;
+    }
+}

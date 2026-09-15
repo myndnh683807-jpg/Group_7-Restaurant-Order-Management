@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restaurant OS — Hệ thống Quản lý Nhà hàng & Điểm bán hàng SaaS">
+    <title>Restaurant OS — Hệ Thống Quản Lý Nhà Hàng (Group 07)</title>
+
+    <!-- Bootstrap 5.3 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --pos-primary: #0070ba;
+            --pos-primary-dark: #005a96;
+            --pos-primary-light: #e0f2fe;
+            --pos-success: #16a34a;
+            --pos-warning: #d97706;
+            --pos-danger: #dc2626;
+            --pos-bg: #f4f6f8;
+            --pos-sidebar-bg: #ffffff;
+            --pos-border: #e2e8f0;
+            --pos-text-main: #1e293b;
+            --pos-text-muted: #64748b;
+            --pos-card-bg: #ffffff;
+            --sidebar-width: 250px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--pos-bg);
+            color: var(--pos-text-main);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .app-layout { display: flex; min-height: 100vh; }
+
+        /* Sidebar 250px Fixed Left */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: #ffffff;
+            border-right: 1px solid var(--pos-border);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1020;
+        }
+
+        .sidebar-brand {
+            padding: 1.15rem 1.25rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--pos-border);
+            text-decoration: none;
+            color: var(--pos-text-main);
+        }
+
+        .sidebar-brand-icon {
+            width: 36px;
+            height: 36px;
+            background-color: var(--pos-primary);
+            color: #ffffff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .sidebar-brand-text h5 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--pos-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .sidebar-brand-text small {
+            font-size: 0.7rem;
+            color: var(--pos-text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0.85rem 0.65rem;
+            margin: 0;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .sidebar-section-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--pos-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.65rem 0.75rem 0.25rem 0.75rem;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: #334155;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: 6px;
+            margin-bottom: 0.25rem;
+            transition: all 0.15s ease;
+        }
+
+        .sidebar-link i {
+            font-size: 1.15rem;
+            margin-right: 0.75rem;
+            color: #64748b;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f1f5f9;
+            color: var(--pos-primary);
+        }
+
+        .sidebar-link:hover i { color: var(--pos-primary); }
+
+        .sidebar-link.active {
+            background-color: var(--pos-primary-light);
+            color: var(--pos-primary);
+            border-left: 3.5px solid var(--pos-primary);
+            font-weight: 700;
+        }
+
+        .sidebar-link.active i { color: var(--pos-primary); }
+
+        .sidebar-footer {
+            padding: 0.85rem 1rem;
+            border-top: 1px solid var(--pos-border);
+            background-color: #f8fafc;
+        }
+
+        /* Main Content Wrapper */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .top-navbar {
+            height: 58px;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--pos-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* KPI Card */
+        .kpi-card {
+            background-color: #ffffff;
+            border: 1px solid var(--pos-border);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .kpi-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .kpi-value {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--pos-text-main);
+            line-height: 1.2;
+        }
+
+        .kpi-label {
+            font-size: 0.72rem;
+            color: var(--pos-text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Module Grid Card */
+        .module-grid-card {
+            background-color: #ffffff;
+            border: 1px solid var(--pos-border);
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: border-color 0.15s ease;
+        }
+
+        .module-grid-card:hover {
+            border-color: var(--pos-primary);
+        }
+
+        .module-header {
+            padding: 1rem 1.15rem 0.5rem 1.15rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .module-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .module-title-wrap h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 0.2rem 0;
+            color: #0f172a;
+        }
+
+        .module-owner-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        .module-body {
+            padding: 0.5rem 1.15rem 1.15rem 1.15rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .module-desc {
+            font-size: 0.82rem;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 0.85rem;
+        }
+
+        .btn-pos-primary {
+            background-color: var(--pos-primary);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            padding: 0.5rem 0.85rem;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+            width: 100%;
+        }
+
+        .btn-pos-primary:hover {
+            background-color: var(--pos-primary-dark);
+            color: #ffffff;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        @media (max-width: 991px) {
+            .sidebar { transform: translateX(-100%); transition: transform 0.25s ease; }
+            .sidebar.show { transform: translateX(0); }
+            .main-wrapper { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-layout">
+    <!-- Sidebar Navigation (250px cố định bên trái) -->
+    <aside class="sidebar shadow-sm">
+        <a href="/" class="sidebar-brand">
+            <div class="sidebar-brand-icon">
+                <i class="bi bi-shop"></i>
+            </div>
+            <div class="sidebar-brand-text">
+                <h5>Restaurant OS</h5>
+                <small>Hệ Thống SaaS &bull; Nhóm 07</small>
+            </div>
+        </a>
+
+        <ul class="sidebar-menu">
+            <li class="sidebar-section-label">Bảng Điều Khiển</li>
+            <li>
+                <a href="/" class="sidebar-link active">
+                    <i class="bi bi-grid-1x2-fill"></i> Tổng Quan (Dashboard)
+                </a>
+            </li>
+
+            <li class="sidebar-section-label mt-2">Phân Hệ Hoạt Động</li>
+            <li>
+                <a href="./ui-01-order/index.html" class="sidebar-link">
+                    <i class="bi bi-cart3"></i> UI-01: Đặt Món 
+                </a>
+            </li>
+            <li>
+                <a href="./ui-02-table/index.html" class="sidebar-link">
+                    <i class="bi bi-grid-3x3-gap-fill"></i> UI-02: Sơ Đồ Bàn 
+                </a>
+            </li>
+            <li>
+                <a href="./ui-03-kitchen/index.html" class="sidebar-link">
+                    <i class="bi bi-fire"></i> UI-03: Bếp KDS 
+                </a>
+            </li>
+            <li>
+                <a href="./ui-04-pos/index.html" class="sidebar-link">
+                    <i class="bi bi-receipt-cutoff"></i> UI-04: Thu Ngân 
+                </a>
+            </li>
+            <li>
+                <a href="./ui-05-admin/index.html" class="sidebar-link">
+                    <i class="bi bi-shield-lock-fill"></i> UI-05: Quản Trị 
+                </a>
+            </li>
+
+            <li class="sidebar-section-label mt-3">Hạ Tầng Kỹ Thuật</li>
+            <li>
+                <a href="/api/health" target="_blank" class="sidebar-link">
+                    <i class="bi bi-hdd-network"></i> Kiểm Tra API Health
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="d-flex align-items-center mb-1">
+                <span class="live-dot me-2"></span>
+                <span class="small fw-semibold text-dark">Backend C++ Crow: Online</span>
+            </div>
+            <div class="text-muted" style="font-size: 0.72rem;">Port 8080 &bull; MySQL X DevAPI</div>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper (Khu vực bên phải) -->
+    <div class="main-wrapper">
+        <!-- Top Navbar -->
+        <header class="top-navbar shadow-sm">
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-outline-secondary d-lg-none me-2" onclick="document.querySelector('.sidebar').classList.toggle('show')">
+                    <i class="bi bi-list"></i>
+                </button>
+                <i class="bi bi-geo-alt-fill text-primary"></i>
+                <span class="fw-bold text-dark" style="font-size: 0.92rem;">Nhà Hàng Biển Đông — Chi Nhánh Trung Tâm</span>
+                <span class="badge bg-light text-secondary border px-2 py-1 ms-1">Ca Sáng</span>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-none d-md-flex align-items-center text-muted small fw-medium">
+                    <i class="bi bi-clock me-1 text-primary"></i>
+                    <span id="liveClock">--:--:--</span>
+                </div>
+                <div class="vr d-none d-md-block" style="height: 20px;"></div>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px; font-size: 0.8rem;">
+                        G7
+                    </div>
+                    <div class="d-none d-sm-block text-start">
+                        <div class="fw-bold text-dark" style="font-size: 0.82rem;">Quản Trị Viên</div>
+                        <div class="text-muted" style="font-size: 0.7rem;">Group 07 Resto</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main class="p-3 p-lg-4">
+            <!-- Welcome Banner -->
+            <div class="bg-white border rounded-3 p-3 p-lg-4 mb-4 shadow-sm">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <span class="badge bg-primary text-white px-2 py-1 small">SaaS Light Mode</span>
+                            <span class="badge bg-light text-muted border small">Version 2.0</span>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Chào mừng đến với Hệ thống Quản lý Nhà hàng (Restaurant OS)</h4>
+                        <p class="text-muted small mb-0">Hệ thống điều hành bán hàng đa phân hệ chuẩn CukCuk POS — Kiến trúc C++ Crow Server kết nối MySQL X DevAPI</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="/ui-01-order/index.html" class="btn btn-sm btn-primary px-3 fw-semibold d-flex align-items-center gap-2">
+                            <i class="bi bi-plus-circle"></i> Bán Hàng (Ghi Order)
+                        </a>
+                        <button class="btn btn-sm btn-outline-secondary px-3 bg-white" onclick="location.reload()">
+                            <i class="bi bi-arrow-clockwise"></i> Làm Mới
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Row: Thẻ thống kê tổng quan -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="kpi-card shadow-sm">
+                        <div class="kpi-icon-box bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-label">Tổng Doanh Thu Hôm Nay</div>
+                            <div class="kpi-value text-success">$1,845.50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="kpi-card shadow-sm">
+                        <div class="kpi-icon-box bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-grid-3x3-gap-fill"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-label">Bàn Đang Phục Vụ</div>
+                            <div class="kpi-value text-primary">8 <span class="fs-6 text-muted fw-normal">/ 20 Bàn</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="kpi-card shadow-sm">
+                        <div class="kpi-icon-box bg-warning bg-opacity-10 text-warning">
+                            <i class="bi bi-receipt"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-label">Đơn Hàng Đang Xử Lý</div>
+                            <div class="kpi-value text-warning">14 <span class="fs-6 text-muted fw-normal">Đơn</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="kpi-card shadow-sm">
+                        <div class="kpi-icon-box bg-danger bg-opacity-10 text-danger">
+                            <i class="bi bi-fire"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-label">Món Chờ Bếp Nấu</div>
+                            <div class="kpi-value text-danger">5 <span class="fs-6 text-muted fw-normal">Món</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 Phân Hệ Nhóm 07 -->
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h6 class="fw-bold text-uppercase text-secondary small mb-0">
+                    <i class="bi bi-grid-fill me-1 text-primary"></i> 5 Phân Hệ Hoạt Động Theo Thành Viên
+                </h6>
+                <span class="badge bg-white text-muted border shadow-sm">Phân Công Nhóm 07</span>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <!-- 1. : Đặt Món -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="module-grid-card shadow-sm">
+                        <div class="module-header">
+                            <div class="module-icon bg-warning bg-opacity-10 text-warning">
+                                <i class="bi bi-cart3"></i>
+                            </div>
+                            <div class="module-title-wrap">
+                                <h5>UI-01: Đặt Món & Thực Đơn</h5>
+                                <span class="module-owner-badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">
+                                
+                                </span>
+                            </div>
+                        </div>
+                        <div class="module-body">
+                            <p class="module-desc">
+                                Giao diện POS 3 cột chuẩn CukCuk: Chọn bàn, lọc danh mục thực đơn, lưới món ăn cảm ứng, giỏ hàng ghi chú và gửi order xuống bếp.
+                            </p>
+                            <a href="./ui-01-order/index.html" class="btn-pos-primary">
+                                Mở Màn Hình Đặt Món <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. : Sơ Đồ Bàn -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="module-grid-card shadow-sm">
+                        <div class="module-header">
+                            <div class="module-icon bg-info bg-opacity-10 text-info">
+                                <i class="bi bi-grid-3x3-gap"></i>
+                            </div>
+                            <div class="module-title-wrap">
+                                <h5>UI-02: Sơ Đồ Bàn & Đặt Chỗ</h5>
+                                <span class="module-owner-badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">
+                                  
+                                </span>
+                            </div>
+                        </div>
+                        <div class="module-body">
+                            <p class="module-desc">
+                                Sơ đồ bàn trực quan phẳng: Trắng (Trống), Xanh lá (Đang dùng), Vàng (Đặt trước). Tiếp nhận yêu cầu thanh toán/hỗ trợ theo thời gian thực.
+                            </p>
+                            <a href="./ui-02-table/index.html" class="btn-pos-primary">
+                                Mở Sơ Đồ Bàn <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3.: Màn Hình Bếp -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="module-grid-card shadow-sm">
+                        <div class="module-header">
+                            <div class="module-icon bg-danger bg-opacity-10 text-danger">
+                                <i class="bi bi-fire"></i>
+                            </div>
+                            <div class="module-title-wrap">
+                                <h5>UI-03: Màn Hình Bếp (KDS)</h5>
+                                <span class="module-owner-badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25">
+                                   
+                                </span>
+                            </div>
+                        </div>
+                        <div class="module-body">
+                            <p class="module-desc">
+                                Bảng điều phối Kanban phẳng chia cột: Chờ nấu &rarr; Đang nấu &rarr; Nấu xong &rarr; Đã phục vụ với thẻ món ăn tinh gọn, nút bấm vuông vức.
+                            </p>
+                            <a href="./ui-03-kitchen/index.html" class="btn-pos-primary">
+                                Mở Màn Hình Bếp <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. : Thu Ngân POS -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="module-grid-card shadow-sm">
+                        <div class="module-header">
+                            <div class="module-icon bg-success bg-opacity-10 text-success">
+                                <i class="bi bi-receipt-cutoff"></i>
+                            </div>
+                            <div class="module-title-wrap">
+                                <h5>UI-04: Thu Ngân & Hóa Đơn</h5>
+                                <span class="module-owner-badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">
+                                     
+                                </span>
+                            </div>
+                        </div>
+                        <div class="module-body">
+                            <p class="module-desc">
+                                Bảng hóa đơn viền mảnh: Xem chi tiết món ăn, giảm giá VIP/Voucher, tính thuế VAT 8%, thanh toán tiền mặt/chuyển khoản QR code.
+                            </p>
+                            <a href="./ui-04-pos/index.html" class="btn-pos-primary">
+                                Mở Thu Ngân POS <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. MY: Quản Trị & Báo Cáo -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="module-grid-card shadow-sm">
+                        <div class="module-header">
+                            <div class="module-icon bg-primary bg-opacity-10 text-primary">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
+                            <div class="module-title-wrap">
+                                <h5>UI-05: Quản Trị & Báo Cáo</h5>
+                                <span class="module-owner-badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="module-body">
+                            <p class="module-desc">
+                                Quản trị hệ thống toàn diện: Quản lý nhân viên (UC13), quản lý kho nguyên vật liệu (UC14), báo cáo doanh thu & biểu đồ KPI kinh doanh.
+                            </p>
+                            <a href="./ui-05-admin/index.html" class="btn-pos-primary">
+                                Mở Quản Trị & Báo Cáo <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. KỸ THUẬT: API Backend -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="module-grid-card shadow-sm">
+                        <div class="module-header">
+                            <div class="module-icon bg-secondary bg-opacity-10 text-secondary">
+                                <i class="bi bi-hdd-network-fill"></i>
+                            </div>
+                            <div class="module-title-wrap">
+                                <h5>Hạ Tầng Backend C++</h5>
+                                <span class="module-owner-badge bg-secondary bg-opacity-10 text-secondary border">
+                                    MVC 2.0 Core
+                                </span>
+                            </div>
+                        </div>
+                        <div class="module-body">
+                            <p class="module-desc">
+                                Crow C++ HTTP Server đa luồng (Port 8080) kết nối MySQL X DevAPI (Port 33060). Phục vụ 9 Controller API đồng bộ dữ liệu thời gian thực.
+                            </p>
+                            <a href="/api/health" target="_blank" class="btn btn-outline-secondary w-100 fw-semibold" style="font-size: 0.85rem;">
+                                Kiểm Tra Kết Nối API <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+        const dayName = days[now.getDay()];
+        const dateStr = now.toLocaleDateString('vi-VN');
+        const timeStr = now.toLocaleTimeString('vi-VN');
+        const clockEl = document.getElementById('liveClock');
+        if (clockEl) {
+            clockEl.innerText = `${dayName}, ${dateStr} - ${timeStr}`;
+        }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

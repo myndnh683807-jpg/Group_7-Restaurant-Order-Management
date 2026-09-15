@@ -1,0 +1,13 @@
+# Build artifacts
+*.obj
+*.exe
+*.pdb
+out/
+build/
+.vs/
+# Local files
+.env
+build_local/
+build_test_vs/
+.vscode/
+*.dll
