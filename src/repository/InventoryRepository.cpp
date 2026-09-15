@@ -34,7 +34,8 @@ std::vector<model::Inventory> InventoryRepository::getAll() {
     auto& session = database::Database::getInstance().getSession();
 
     mysqlx::SqlResult result = session.sql(
-        "SELECT inventory_id, item_name, quantity, unit, min_stock, last_updated "
+        "SELECT inventory_id, item_name, quantity, unit, min_stock, "
+        "DATE_FORMAT(last_updated, '%Y-%m-%d %H:%i:%s') AS last_updated "
         "FROM Inventory ORDER BY inventory_id"
     ).execute();
 
@@ -53,7 +54,8 @@ std::optional<model::Inventory> InventoryRepository::getById(int inventoryId) {
     auto& session = database::Database::getInstance().getSession();
 
     mysqlx::SqlStatement stmt = session.sql(
-        "SELECT inventory_id, item_name, quantity, unit, min_stock, last_updated "
+        "SELECT inventory_id, item_name, quantity, unit, min_stock, "
+        "DATE_FORMAT(last_updated, '%Y-%m-%d %H:%i:%s') AS last_updated "
         "FROM Inventory WHERE inventory_id = ?"
     );
 

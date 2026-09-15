@@ -67,7 +67,7 @@ OrderRepository::getAll() {
 
     mysqlx::SqlResult result = session.sql(
         "SELECT order_id, table_id, staff_id, "
-        "order_date, order_status, total_amount "
+        "CAST(order_date AS CHAR) AS order_date, order_status, total_amount "
         "FROM Orders "
         "ORDER BY order_id DESC"
     ).execute();
@@ -94,7 +94,7 @@ OrderRepository::getById(
 
     mysqlx::SqlStatement stmt = session.sql(
         "SELECT order_id, table_id, staff_id, "
-        "order_date, order_status, total_amount "
+        "CAST(order_date AS CHAR) AS order_date, order_status, total_amount "
         "FROM Orders "
         "WHERE order_id = ?"
     );

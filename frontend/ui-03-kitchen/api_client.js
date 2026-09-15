@@ -10,21 +10,51 @@ let state = {
 };
 
 const Api = {
-    async getKitchenItems() {
-        try {
-            const res = await fetch(`${API_BASE}/kitchen/items`);
-            const data = await res.json();
-            return data.success && data.data ? data.data : [];
-        } catch (err) {
-            console.warn('[API] Dung Mock Kitchen Items:', err);
-            return [
-                { order_item_id: 101, order_id: 1, table_number: 'Bàn 02', item_id: 4, item_name: 'Bò Bít Tết Thượng Hạng', quantity: 2, special_note: 'Medium rare, nhiều tiêu đen', item_status: 'Pending', order_date: '10 phút trước' },
-                { order_item_id: 102, order_id: 1, table_number: 'Bàn 02', item_id: 2, item_name: 'Khoai Tây Chiên Giòn', quantity: 1, special_note: 'Chiên giòn', item_status: 'Preparing', order_date: '12 phút trước' },
-                { order_item_id: 103, order_id: 2, table_number: 'Bàn 01', item_id: 3, item_name: 'Gà Nướng Mật Ong', quantity: 1, special_note: 'Ít ngọt', item_status: 'Ready', order_date: '18 phút trước' },
-                { order_item_id: 104, order_id: 3, table_number: 'Bàn 05', item_id: 1, item_name: 'Nem Cuốn Tôm Thịt', quantity: 3, special_note: 'Không cay', item_status: 'Served', order_date: '25 phút trước' }
-            ];
+async getKitchenItems() {
+    try {
+        const res = await fetch(`${API_BASE}/orders`);
+
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}`);
         }
-    },
+
+        const result = await res.json();
+        const orders = result.data || [];
+
+        const kitchenItems = [];
+
+        orders.forEach(order => {
+            if (order.order_status === "Completed") return;
+
+            (order.items || []).forEach(item => {
+                if (item.item_status === "Served") return;
+
+                kitchenItems.push({
+                    order_item_id: item.order_item_id,
+                    id: item.order_item_id,
+                    order_id: order.order_id,
+                    table_id: order.table_id,
+                    table_number: `Bàn ${order.table_id}`,
+                    item_id: item.item_id,
+                    item_name: item.item_name || `Món #${item.item_id}`,
+                    quantity: item.quantity,
+                    special_note: item.special_note || "",
+                    item_status: item.item_status,
+                    status: item.item_status,
+                    unit_price: item.unit_price,
+                    order_date: order.order_date
+                });
+            });
+        });
+
+        console.log("KITCHEN ITEMS =", kitchenItems);
+        return kitchenItems;
+
+    } catch (err) {
+        console.error("Lỗi lấy đơn xuống bếp:", err);
+        return [];
+    }
+},
 
     async updateStatus(orderItemId, newStatus) {
         const res = await fetch(`${API_BASE}/kitchen/items/${orderItemId}/status`, {

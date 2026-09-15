@@ -70,7 +70,8 @@ InvoiceRepository::getAll() {
 
     mysqlx::SqlResult result = session.sql(
         "SELECT invoice_id, order_id, cashier_id, "
-        "created_at, subtotal, discount_amount, "
+        "DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') AS created_at, "
+        "subtotal, discount_amount, "
         "final_amount, payment_method, payment_status "
         "FROM Invoice "
         "ORDER BY invoice_id DESC"
@@ -98,7 +99,8 @@ InvoiceRepository::getById(
 
     mysqlx::SqlStatement stmt = session.sql(
         "SELECT invoice_id, order_id, cashier_id, "
-        "created_at, subtotal, discount_amount, "
+        "DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') AS created_at, "
+        "subtotal, discount_amount, "
         "final_amount, payment_method, payment_status "
         "FROM Invoice "
         "WHERE invoice_id = ?"
@@ -134,7 +136,8 @@ InvoiceRepository::getByOrderId(
 
     mysqlx::SqlStatement stmt = session.sql(
         "SELECT invoice_id, order_id, cashier_id, "
-        "created_at, subtotal, discount_amount, "
+        "DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') AS created_at, "
+        "subtotal, discount_amount, "
         "final_amount, payment_method, payment_status "
         "FROM Invoice "
         "WHERE order_id = ?"
